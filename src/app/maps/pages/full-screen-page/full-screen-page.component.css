@@ -1,0 +1,22 @@
+div {
+  width: 100vw;
+  height: 100vh;
+} 
+
+#map-list {
+  font-size: 15px;
+  position: fixed;
+  bottom: 30px;
+  right: -60px;
+  padding: 100px;
+  width: 350px;
+}
+
+#add-marker-button {
+  font-size: 15px;
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+
+}
+
