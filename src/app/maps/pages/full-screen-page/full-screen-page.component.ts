@@ -1,16 +1,19 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
-import { LngLat, Map, Marker } from 'mapbox-gl';
+import { LngLat, Map, Marker, Popup } from 'mapbox-gl';
+import dataBase from '../../../../../dataBase/data.json';
 
 interface MarkerAndColor {
   color: string;
   marker: Marker;
 }
 
-interface PlainMarker {
-  color: string;
-  lngLat: number[];
+interface Place {
+  id: number,
+  name: String,
+  lat: number,
+  long: number,
+  image: string
 }
-
 
 @Component({
   selector: 'full-screen-page',
@@ -23,12 +26,16 @@ export class FullScreenPageComponent implements AfterViewInit {
   public markers: MarkerAndColor[] = [];
 
   public map?: Map;
-  public currentLngLat: LngLat = new LngLat(
-    -3.691538117018581,
-    40.4168
-  );
+  public currentLngLat: LngLat = new LngLat(-3.691538117018581, 40.4168);
+  public places: [] = [];
 
   ngAfterViewInit(): void {
+    if (!localStorage.getItem('sites'))
+      localStorage.setItem('sites', JSON.stringify(dataBase));
+
+    let localStorageDataBase = localStorage.getItem('sites');
+    if (localStorageDataBase) this.places = JSON.parse(localStorageDataBase);
+   
     if (!this.divMap) throw 'El elemento HTML no fue encontrado';
     this.map = new Map({
       container: this.divMap.nativeElement, // container ID
@@ -37,7 +44,12 @@ export class FullScreenPageComponent implements AfterViewInit {
       zoom: 5.5, // starting zoom
     });
 
-    this.readFromLocalStorage();
+    this.places.forEach((place) => {
+        this.addMarker(place);
+    });
+
+    // POP-UP
+    if (!this.map) return;
   }
 
   createMarker() {
@@ -46,27 +58,27 @@ export class FullScreenPageComponent implements AfterViewInit {
       ((Math.random() * 16) | 0).toString(16)
     );
     const lngLat = this.map.getCenter();
-    this.addMarker(lngLat, color);
   }
 
-  addMarker(lngLat: LngLat, color: string) {
+  addMarker(place: Place) {
     if (!this.map) return;
 
+    const color = '#xxxxxx'.replace(/x/g, (y) =>
+          ((Math.random() * 16) | 0).toString(16)
+        );
+
+    const popup = new Popup({ closeButton: true }).setHTML(`
+        <h6>Ciudad:${place.name}</h6>
+        <img src="${place.image}" width="100px" />
+      `);
+    const lngLat = new LngLat(place.long, place.lat)
     const marker = new Marker({
       color: color,
-      draggable: true, //esto hace que puedas mover el marcador
+      draggable: false, //esto hace que puedas mover el marcador
     })
       .setLngLat(lngLat)
+      .setPopup(popup)
       .addTo(this.map);
-
-    this.markers.push({
-      color,
-      marker,
-    });
-    this.saveToLocalStorage();
-
-    marker.on('dragend', () => this.saveToLocalStorage()); // cuando muevo el marcador se queda grabada su ubicación
-    
   }
 
   deleteMarker(index: number) {
@@ -81,31 +93,4 @@ export class FullScreenPageComponent implements AfterViewInit {
       center: marker.getLngLat(),
     });
   }
-
-  //localStorage solo guarda strings. Aquí guardaremos la latitud y longitud y el color
-  saveToLocalStorage() {
-    const plainMarkers: PlainMarker[] = this.markers.map(
-      ({ color, marker }) => {
-        return {
-          color,
-          lngLat: marker.getLngLat().toArray(),
-        };
-      }
-    );
-    localStorage.setItem('plainMarkers', JSON.stringify(plainMarkers));
-  }
-
-  readFromLocalStorage() {
-    const plainMarkersString = localStorage.getItem('plainMarkers') ?? '[]';
-    const plainMarkers: PlainMarker[] = JSON.parse(plainMarkersString);
-
-    plainMarkers.forEach(({ color, lngLat }) => {
-      const [lng, lat] = lngLat;
-      const coords = new LngLat(lng, lat);
-      this.addMarker(coords, color);
-    });
-  }
-
-  
 }
-

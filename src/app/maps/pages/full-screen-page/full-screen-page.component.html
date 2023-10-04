@@ -1,5 +1,7 @@
 <div id="map" #map></div>
 
+
+
 <div id="map-list">
     <ul class="list-group">
         <li *ngFor="let colorMarker of markers; let i = index" [ngStyle]="{backgroundColor: colorMarker.color}"
@@ -8,6 +10,16 @@
         </li>
     </ul>
 </div>
+
+<!--Buscador-->
+<div class="input-group">
+    <div id="search-autocomplete" class="form-outline">
+      <input type="search" id="form1" class="form-control" />
+    </div>
+    <button type="button" class="btn btn-primary">
+      <i class="fas fa-search"></i>
+    </button>
+  </div>
 
 <button id="add-marker-button" (click)="createMarker()" class="btn btn-primary">
     + Agregar marcador
