@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { MapsModule } from './maps/maps.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +14,7 @@ import { MapsModule } from './maps/maps.module';
     HomeComponent,
     FooterComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, MapsModule],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })

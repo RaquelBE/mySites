@@ -8,14 +8,12 @@ import * as mapboxgl from 'mapbox-gl';
 
 import { MapsRoutingModule } from './maps-routing.module';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
-import { MiniMapComponent } from './components/mini-map/mini-map.component';
 import { FullScreenPageComponent } from './pages/full-screen-page/full-screen-page.component';
 import { MapsLayoutComponent } from './layaout/maps-layout/maps-layout.component';
 import { ZoomRangePageComponent } from './pages/zoom-range-page/zoom-range-page.component';
 
 @NgModule({
   declarations: [
-    MiniMapComponent,
     MapsLayoutComponent,
     FullScreenPageComponent,
     ZoomRangePageComponent,

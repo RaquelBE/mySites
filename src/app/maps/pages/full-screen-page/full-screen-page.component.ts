@@ -52,13 +52,13 @@ export class FullScreenPageComponent implements AfterViewInit {
     if (!this.map) return;
   }
 
-  createMarker() {
+  /* createMarker() {
     if (!this.map) return;
     const color = '#xxxxxx'.replace(/x/g, (y) =>
       ((Math.random() * 16) | 0).toString(16)
     );
     const lngLat = this.map.getCenter();
-  }
+  } */
 
   addMarker(place: Place) {
     if (!this.map) return;
@@ -68,7 +68,7 @@ export class FullScreenPageComponent implements AfterViewInit {
         );
 
     const popup = new Popup({ closeButton: true }).setHTML(`
-        <h6>Ciudad:${place.name}</h6>
+        <h6>${place.name}</h6>
         <img src="${place.image}" width="100px" />
       `);
     const lngLat = new LngLat(place.long, place.lat)
