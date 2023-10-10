@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { LngLat, Map, Marker, Popup } from 'mapbox-gl';
+import { Router } from '@angular/router';
 import dataBase from '../../../../../dataBase/data.json';
 
 interface MarkerAndColor {
@@ -9,10 +10,11 @@ interface MarkerAndColor {
 
 interface Place {
   id: number;
-  name: String;
+  name: string;
   lat: number;
   long: number;
   image: string;
+  description: string;
 }
 
 @Component({
@@ -27,21 +29,20 @@ export class FullScreenPageComponent implements AfterViewInit {
 
   public map?: Map;
   public currentLngLat: LngLat = new LngLat(-3.691538117018581, 40.4168);
-  public places: [] = [];
+  public places: [] = []; // Inicializar como una matriz de objetos Place
 
   ngAfterViewInit(): void {
     if (!localStorage.getItem('sites'))
       localStorage.setItem('sites', JSON.stringify(dataBase));
-
     let localStorageDataBase = localStorage.getItem('sites');
     if (localStorageDataBase) this.places = JSON.parse(localStorageDataBase);
 
     if (!this.divMap) throw 'El elemento HTML no fue encontrado';
     this.map = new Map({
-      container: this.divMap.nativeElement, // container ID
-      style: 'mapbox://styles/mapbox/streets-v12', // style URL
-      center: this.currentLngLat, // starting position [lng, lat]
-      zoom: 5.5, // starting zoom
+      container: this.divMap.nativeElement,
+      style: 'mapbox://styles/mapbox/streets-v12',
+      center: this.currentLngLat,
+      zoom: 5.5,
     });
 
     this.places.forEach((place) => {
@@ -59,13 +60,6 @@ export class FullScreenPageComponent implements AfterViewInit {
       ((Math.random() * 16) | 0).toString(16)
     );
 
-    /*  const popup = new Popup({ closeButton: true }).setHTML(`
-    <a routerLink="/maps/detail/${place.id}">
-      <h6>${place.name}</h6>
-      <img src="${place.image}" width="100px" />
-    </a>
-    `); */
-
     const popup = new Popup({ closeButton: true }).setHTML(`
     <a id="popup-link" href="/maps/detail/${place.id}">
       <h6>${place.name}</h6>
@@ -76,7 +70,7 @@ export class FullScreenPageComponent implements AfterViewInit {
     const lngLat = new LngLat(place.long, place.lat);
     const marker = new Marker({
       color: color,
-      draggable: false, //esto hace que puedas mover el marcador
+      draggable: false,
     })
       .setLngLat(lngLat)
       .setPopup(popup)
@@ -96,11 +90,10 @@ export class FullScreenPageComponent implements AfterViewInit {
   }
 
   deleteMarker(index: number) {
-    this.markers[index].marker.remove(); //elimina el marcador del mapa, pero deja la "etiqueta"
-    this.markers.splice(index, 1); //elimina la "etiqueta"
+    this.markers[index].marker.remove();
+    this.markers.splice(index, 1);
   }
 
-  // flyTo -> hace que vaya al marcador que indiques pulsando en la "etiqueta" de forma animada
   flyTo(marker: Marker) {
     this.map?.flyTo({
       zoom: 14,
