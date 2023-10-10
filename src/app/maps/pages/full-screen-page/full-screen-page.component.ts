@@ -8,11 +8,11 @@ interface MarkerAndColor {
 }
 
 interface Place {
-  id: number,
-  name: String,
-  lat: number,
-  long: number,
-  image: string
+  id: number;
+  name: String;
+  lat: number;
+  long: number;
+  image: string;
 }
 
 @Component({
@@ -35,7 +35,7 @@ export class FullScreenPageComponent implements AfterViewInit {
 
     let localStorageDataBase = localStorage.getItem('sites');
     if (localStorageDataBase) this.places = JSON.parse(localStorageDataBase);
-   
+
     if (!this.divMap) throw 'El elemento HTML no fue encontrado';
     this.map = new Map({
       container: this.divMap.nativeElement, // container ID
@@ -45,33 +45,35 @@ export class FullScreenPageComponent implements AfterViewInit {
     });
 
     this.places.forEach((place) => {
-        this.addMarker(place);
+      this.addMarker(place);
     });
 
     // POP-UP
     if (!this.map) return;
   }
 
-  /* createMarker() {
-    if (!this.map) return;
-    const color = '#xxxxxx'.replace(/x/g, (y) =>
-      ((Math.random() * 16) | 0).toString(16)
-    );
-    const lngLat = this.map.getCenter();
-  } */
-
   addMarker(place: Place) {
     if (!this.map) return;
 
     const color = '#xxxxxx'.replace(/x/g, (y) =>
-          ((Math.random() * 16) | 0).toString(16)
-        );
+      ((Math.random() * 16) | 0).toString(16)
+    );
+
+    /*  const popup = new Popup({ closeButton: true }).setHTML(`
+    <a routerLink="/maps/detail/${place.id}">
+      <h6>${place.name}</h6>
+      <img src="${place.image}" width="100px" />
+    </a>
+    `); */
 
     const popup = new Popup({ closeButton: true }).setHTML(`
-        <h6>${place.name}</h6>
-        <img src="${place.image}" width="100px" />
-      `);
-    const lngLat = new LngLat(place.long, place.lat)
+    <a id="popup-link" href="/maps/detail/${place.id}">
+      <h6>${place.name}</h6>
+      <img src="${place.image}" width="100px" />
+    </a>
+  `);
+
+    const lngLat = new LngLat(place.long, place.lat);
     const marker = new Marker({
       color: color,
       draggable: false, //esto hace que puedas mover el marcador
@@ -79,6 +81,18 @@ export class FullScreenPageComponent implements AfterViewInit {
       .setLngLat(lngLat)
       .setPopup(popup)
       .addTo(this.map);
+
+    const popupLink = popup.getElement()?.querySelector('#popup-link');
+    if (popupLink) {
+      popupLink.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        const href = popupLink.getAttribute('href');
+        if (href) {
+          window.location.href = href;
+        }
+      });
+    }
   }
 
   deleteMarker(index: number) {

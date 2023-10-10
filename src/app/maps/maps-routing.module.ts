@@ -5,6 +5,8 @@ import { MapsLayoutComponent } from './layaout/maps-layout/maps-layout.component
 
 import { FullScreenPageComponent } from './pages/full-screen-page/full-screen-page.component';
 import { ZoomRangePageComponent } from './pages/zoom-range-page/zoom-range-page.component';
+import { AddSiteComponent } from './pages/add-site/add-site.component';
+import { DetailPageComponent } from './pages/detail-page/detail-page.component';
 
 const routes: Routes = [
   {
@@ -12,8 +14,10 @@ const routes: Routes = [
     component: MapsLayoutComponent,
     children: [
       { path: 'fullscreen', component: FullScreenPageComponent },
-      { path: '**', redirectTo: 'fullscreen' },
       { path: 'zoom-range', component: ZoomRangePageComponent },
+      { path: 'add-site', component: AddSiteComponent},
+      { path: 'detail/:id', component: DetailPageComponent},
+      { path: '**', redirectTo: 'fullscreen' }
     ],
   },
 ];

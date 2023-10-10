@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
+import { DetailPageComponent } from './maps/pages/detail-page/detail-page.component';
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: 'home',
-    pathMatch: "full",
+    pathMatch: 'full',
   },
   {
     path: 'home',
@@ -14,16 +15,21 @@ const routes: Routes = [
   },
   {
     path: 'maps',
-    loadChildren: () => import('./maps/maps.module').then(m => m.MapsModule),
+    loadChildren: () => import('./maps/maps.module').then((m) => m.MapsModule),
   },
+  {
+    path: 'detail/:id',
+    component: DetailPageComponent,
+  },
+
   {
     path: '**',
     redirectTo: '/',
-  }
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

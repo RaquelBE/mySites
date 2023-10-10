@@ -1,0 +1,9 @@
+<div class="card" style="width: 18rem;">
+  <img src={{newPlace?.image}} class="card-img-top" alt="...">
+  <div class="card-body">
+    <p class="card-text">{{ newPlace?.name }}</p>
+  </div>
+  <button id="return" [routerLink]="['/maps/fullscreen']" class="btn btn-primary">
+    Mapa
+  </button>
+</div>
