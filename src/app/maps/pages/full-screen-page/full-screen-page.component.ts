@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { LngLat, Map, Marker, Popup } from 'mapbox-gl';
-import { Router } from '@angular/router';
 import dataBase from '../../../../../dataBase/data.json';
 
 interface MarkerAndColor {

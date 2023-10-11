@@ -13,6 +13,7 @@ import { MapsLayoutComponent } from './layaout/maps-layout/maps-layout.component
 import { ZoomRangePageComponent } from './pages/zoom-range-page/zoom-range-page.component';
 import { AddSiteComponent } from './pages/add-site/add-site.component';
 import { DetailPageComponent } from './pages/detail-page/detail-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { DetailPageComponent } from './pages/detail-page/detail-page.component';
     AddSiteComponent,
     DetailPageComponent,
   ],
-  imports: [CommonModule, MapsRoutingModule, SideMenuComponent],
+  imports: [CommonModule, MapsRoutingModule, SideMenuComponent, ReactiveFormsModule],
   exports: [ FullScreenPageComponent ],
 })
 export class MapsModule {}

@@ -1,20 +1,27 @@
-<div class="form-container">
-    <form>
+<div class="image-container">
+    <div class="form-container">
+        <form [formGroup]="siteForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="ciudad">Ciudad</label>
+                <input formControlName="name" type="text" class="form-control" id="ciudad" name="ciudad" placeholder="Nombre Ciudad">
+            </div>
 
-        <div class="form-group">
-            <label for="ciudad">Ciudad</label>
-            <input type="text" class="form-control" id="ciudad" placeholder="Nombre Ciudad">
-        </div>
+            <div class="form-group">
+                <label for="description">Descripción</label>
+                <input formControlName="description" type="text" class="form-control" id="description" name="description" placeholder="Descripción">
+            </div>
 
-        <div class="form-group">
-            <label for="image">Image</label>
-            <br>
-            <input type="file" class="form-control-file" id="image">
-        </div>
+            <!-- <div class="form-group">
+                <label for="image">Imagen</label>
+                <br>
+                <input type="file" class="form-control-file" id="image" name="image">
+            </div>
+            -->
+            <!-- <input type="URL" name="myURL" [(ngModel)]="myURL" placeholder="insert image URL here" (change)="onURLinserted() ">
+            <img [src]="imageToShow" alt="Place image title"> -->
 
-        <button id="buttonSave" [routerLink]="['/maps/detail']" type="submit" class="btn btn-info">Añadir
-            Ciudad</button>
-        <button id="buttonRetorn" type="submit" [routerLink]="['/maps/fullscreen']" class="btn btn-info">Volver al
-            Mapa</button>
-    </form>
+            <button id="buttonSave" type="submit" class="btn btn-info">Añadir Ciudad</button>
+            <button id="buttonRetorn" type="submit" [routerLink]="['/maps/fullscreen']" class="btn btn-info">Volver al Mapa</button>
+        </form>
+    </div>
 </div>
