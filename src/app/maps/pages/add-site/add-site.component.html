@@ -5,19 +5,32 @@
                 <label for="description">Ciudad</label>
                 <search-bar></search-bar>
             </div>
-            
+
             <div class="form-group">
                 <label for="description">Descripción</label>
                 <input formControlName="description" type="text" class="form-control" id="description"
                     name="description" placeholder="Descripción">
             </div>
 
+            <upload-file></upload-file>
+
+          <!--   <label for="file">Select File
+                <img [src]="imageUrl" alt="Image Review">
+            </label>
+            <input type="file" id="file" accept="image/*" hidden (change)="onSelectNewFile($event.target?.files)">
+
+            Image Base64 Code -->
+            <!-- <textarea rows="10" disabled [innerHTML]="base64"></textarea>-->
+
+            <!-- Buttons-->
+           <!--  <button (click)="convertFileToBase64()">Convert Image To Base64</button>  -->
+           
             <!-- <div class="form-group">
                 <label for="image">Imagen</label>
                 <br>
                 <input type="file" class="form-control-file" id="image" name="image">
             </div> -->
-            
+
             <!-- <input type="URL" name="myURL" [(ngModel)]="myURL" placeholder="insert image URL here" (change)="onURLinserted() ">
             <img [src]="imageToShow" alt="Place image title"> -->
 

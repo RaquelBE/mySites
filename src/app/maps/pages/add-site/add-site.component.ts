@@ -8,8 +8,12 @@ import { SearchBarComponent } from '../../components/search-bar/search-bar.compo
   styleUrls: ['./add-site.component.css'],
 })
 export class AddSiteComponent {
+  
   @ViewChild(SearchBarComponent) childComponent! : SearchBarComponent;
   siteForm: FormGroup;
+  fileSelected?:Blob;
+  base64: string = "Base64..."
+  imageUrl?:string;
 
   constructor(private formBuilder: FormBuilder) {
     this.siteForm = this.formBuilder.group({
@@ -19,8 +23,8 @@ export class AddSiteComponent {
   }
 
   addPlace() {
-    this.siteForm.value.image =
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Avila_001.jpg/1200px-Avila_001.jpg'; 
+   /*  this.siteForm.value.image =
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Avila_001.jpg/1200px-Avila_001.jpg';  */
     this.siteForm.value.lat = this.childComponent.place.center[1];
     this.siteForm.value.long = this.childComponent.place.center[0];
     this.siteForm.value.id = this.childComponent.place.id; 
