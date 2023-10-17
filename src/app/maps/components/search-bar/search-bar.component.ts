@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PlacesService } from '../../services/places.service';
+import { Feature } from '../../interfaces/places';
 
 @Component({
   selector: 'search-bar',
@@ -8,6 +9,7 @@ import { PlacesService } from '../../services/places.service';
 })
 export class SearchBarComponent {
   private debounceTimer?: NodeJS.Timeout;
+  public place!: Feature;
   public placeName: string = '';
 
   constructor(private placesService: PlacesService) {}
@@ -21,6 +23,7 @@ export class SearchBarComponent {
   }
 
   finishInput(place: any) {
+    this.place = place;
     this.placeName = place.place_name;
   }
 }

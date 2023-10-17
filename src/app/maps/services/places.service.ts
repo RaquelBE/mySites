@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Feature, PlacesResponse } from '../interfaces/places';
-import { HttpClient } from '@angular/common/http';
 import { PlacesApiClient } from '../api';
 
 @Injectable({
@@ -10,6 +9,10 @@ export class PlacesService {
   public userLocation?: [number, number];
   public isLoadingPlaces: boolean = false;
   public places: Feature[] = [];
+
+  private apiKey: string =
+    'pk.eyJ1IjoicmFxdWVsMjI5MiIsImEiOiJjbG45eXY0MmkwZmNkMm1tZDNzZGo4dDV0In0.bIhycUlkPj_OvMwV0r8UAg';
+  private apiUrl: string = 'https://docs.mapbox.com/api/search/geocoding/';
 
   get isUserLocationReady(): boolean {
     return !!this.userLocation;
@@ -36,7 +39,7 @@ export class PlacesService {
   }
 
   getPlacesByQuery(query: string = '') {
-    if ( query.length === 0 ) {
+    if (query.length === 0) {
       this.isLoadingPlaces = false;
       this.places = [];
       return;
@@ -46,7 +49,7 @@ export class PlacesService {
     this.isLoadingPlaces = true;
 
     this.placesApi
-      .get<PlacesResponse>(`/${ query }.json`, {
+      .get<PlacesResponse>(`/${query}.json`, {
         params: {
           proximity: this.userLocation.join(','),
         },
@@ -55,8 +58,8 @@ export class PlacesService {
         (this.isLoadingPlaces = false), (this.places = resp.features);
       });
   }
-}
 
-/*  deletePlaces() {
-    this.places = [];
-  } */
+  /*  deletePlaces() {
+      this.places = [];
+    } */
+}

@@ -20,11 +20,11 @@ export class AddSiteComponent {
 
   addPlace() {
     this.siteForm.value.image =
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Avila_001.jpg/1200px-Avila_001.jpg';
-    this.siteForm.value.lat = 42.033272;
-    this.siteForm.value.long = -3.591411;
-    this.siteForm.value.id = 4;
-    this.siteForm.value.name = this.childComponent.placeName;
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Avila_001.jpg/1200px-Avila_001.jpg'; 
+    this.siteForm.value.lat = this.childComponent.place.center[1];
+    this.siteForm.value.long = this.childComponent.place.center[0];
+    this.siteForm.value.id = this.childComponent.place.id; 
+    this.siteForm.value.name = this.childComponent.place.place_name;
 
     const storedSites = localStorage.getItem('sites');
     const sites = storedSites ? JSON.parse(storedSites) : [];
