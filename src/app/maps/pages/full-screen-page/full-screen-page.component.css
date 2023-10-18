@@ -45,4 +45,8 @@ div {
   width: 350px;
 }
 
-
+:host {
+  display: block;
+  position: relative;
+  animation: fadeIn 0.5s;
+}

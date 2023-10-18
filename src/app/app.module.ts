@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { UploadImageService } from './maps/services/upload-image.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { FooterComponent } from './components/footer/footer.component';
     FooterComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
-  providers: [],
+  providers: [UploadImageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

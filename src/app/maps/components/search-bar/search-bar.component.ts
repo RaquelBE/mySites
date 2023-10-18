@@ -11,6 +11,7 @@ export class SearchBarComponent {
   private debounceTimer?: NodeJS.Timeout;
   public place!: Feature;
   public placeName: string = '';
+  public base64: string = '';
 
   constructor(private placesService: PlacesService) {}
 
@@ -25,5 +26,6 @@ export class SearchBarComponent {
   finishInput(place: any) {
     this.place = place;
     this.placeName = place.place_name;
+    this.base64 = place.base64;
   }
 }

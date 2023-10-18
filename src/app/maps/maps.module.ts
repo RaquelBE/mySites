@@ -16,7 +16,8 @@ import { DetailPageComponent } from './pages/detail-page/detail-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
-import { UploadFileComponent } from './components/upload-file/upload-file.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -27,9 +28,8 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
     DetailPageComponent,
     SearchBarComponent,
     SearchResultsComponent,
-    UploadFileComponent
   ],
-  imports: [CommonModule, MapsRoutingModule, SideMenuComponent, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, MapsRoutingModule, HttpClientModule, SideMenuComponent, ReactiveFormsModule, FormsModule],
   exports: [ FullScreenPageComponent ],
 })
 export class MapsModule {}

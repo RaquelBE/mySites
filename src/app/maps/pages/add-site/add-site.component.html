@@ -2,7 +2,7 @@
     <div class="form-container">
         <form [formGroup]="siteForm">
             <div class="form-group">
-                <label for="description">Ciudad</label>
+                <label for="city">Ciudad</label>
                 <search-bar></search-bar>
             </div>
 
@@ -12,29 +12,9 @@
                     name="description" placeholder="Descripción">
             </div>
 
-            <upload-file></upload-file>
-
-          <!--   <label for="file">Select File
-                <img [src]="imageUrl" alt="Image Review">
-            </label>
-            <input type="file" id="file" accept="image/*" hidden (change)="onSelectNewFile($event.target?.files)">
-
-            Image Base64 Code -->
-            <!-- <textarea rows="10" disabled [innerHTML]="base64"></textarea>-->
-
-            <!-- Buttons-->
-           <!--  <button (click)="convertFileToBase64()">Convert Image To Base64</button>  -->
+            <input type="file" (change)="prueba($event)" class="form-control" id="file">
            
-            <!-- <div class="form-group">
-                <label for="image">Imagen</label>
-                <br>
-                <input type="file" class="form-control-file" id="image" name="image">
-            </div> -->
-
-            <!-- <input type="URL" name="myURL" [(ngModel)]="myURL" placeholder="insert image URL here" (change)="onURLinserted() ">
-            <img [src]="imageToShow" alt="Place image title"> -->
-
-            <button (click)="addPlace()" id="buttonSave" type="submit" class="btn btn-info">Añadir Ciudad</button>
+            <button (click)="addPlace()" id="buttonSave" type="submit" [routerLink]="['/maps/fullscreen']" class="btn btn-info">Añadir Ciudad</button>
             <button id="buttonRetorn" type="submit" [routerLink]="['/maps/fullscreen']" class="btn btn-info">Volver al
                 Mapa</button>
         </form>
