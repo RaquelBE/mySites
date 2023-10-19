@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "name": "Seseña",
     "lat": 40.08535,
     "long": -3.66015,
@@ -8,7 +8,7 @@
     "description": "Es un municipio y localidad española de la provincia de Toledo, en la comunidad autónoma de Castilla-La Mancha. El término, que abarca los núcleos de población de Seseña, Seseña Nuevo, Vallegrande, La Estación y El Quiñón, tiene una población de 28 102 habitantes"
   },
   {
-    "id": 2,
+    "id": "2",
     "name": "Chinchón",
     "lat": 40.1402,
     "long": -3.41568,
@@ -16,7 +16,7 @@
     "description": "Es un municipio y localidad española de la provincia de Madrid. Cuentan con un Parador donde podrás pasar una maravillosa estancia. Puedes visitar su plaza, y podrás ver todo el pueblo desde lo alto de la iglesia."
   },
   {
-    "id": 3,
+    "id": "3",
     "name": "Aranjuez",
     "lat": 40.033272,
     "long": -3.591411,

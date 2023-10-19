@@ -10,7 +10,6 @@ export class UploadImageService {
   constructor(private httpClient: HttpClient) {}
 
   uploadSignature(vals: any): Observable<any> {
-    console.log('entro '); //por aqui si entra
     let data = vals;
     return this.httpClient.post(
       'https://api.cloudinary.com/v1_1/do4qibr9d/image/upload',

@@ -23,13 +23,11 @@ export class AddSiteComponent {
   }
 
   addPlace() {
-    /*  this.siteForm.value.image =
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Avila_001.jpg/1200px-Avila_001.jpg';  */
     this.siteForm.value.lat = this.childComponent.place.center[1];
     this.siteForm.value.long = this.childComponent.place.center[0];
     this.siteForm.value.id = this.childComponent.place.id;
     this.siteForm.value.name = this.childComponent.place.place_name;
-    console.log('IMAGE', this.siteForm.value.image); // este console.log -> image: null
+    console.log('IMAGE', this.siteForm.value.image); 
 
     const storedSites = localStorage.getItem('sites');
     const sites = storedSites ? JSON.parse(storedSites) : [];
@@ -54,13 +52,13 @@ export class AddSiteComponent {
   uploadImage() {
     const data: any = new FormData();
     data.append('file', this.fileToUpload);
-    console.log("FICHERO", this.fileToUpload)
+    const timestamp = new Date().getTime(); // Obtiene una marca de tiempo única
+    const fileName = `image_${timestamp}`; // Genera un nombre de archivo único basado en la marca de tiempo
     data.append('upload_preset', 'fcmtmv8a');
     data.append('cloud_name', 'do4qibr9d');
-    data.append('public_id', this.fileToUpload?.name);
-    this.uploadImageService.uploadSignature(data).subscribe((imageData : any) => {
-     console.log("LALAALA", imageData) //no se ejecuta este console.log
-     this.siteForm.value.image = imageData.url;
+    data.append('public_id', fileName); // Utiliza el nombre de archivo generado
+    this.uploadImageService.uploadSignature(data).subscribe((imageData: any) => {
+      this.siteForm.value.image = imageData.url;
     });
   }
 }

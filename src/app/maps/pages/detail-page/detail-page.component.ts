@@ -38,7 +38,8 @@ export class DetailPageComponent implements OnInit {
       const id = params['id'];
 
       // Buscar el lugar por ID
-      const place = this.sites.find((p: any) => p.id === Number(id));
+      const place = this.sites.find((site: any) => site.id === id);
+      //si place no tiene nada, redirigir al usuario a la página 404
       this.newPlace = place;      
     });
   }
