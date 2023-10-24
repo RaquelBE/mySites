@@ -1,24 +1,26 @@
+.home {
+  height: 100vh;
+}
+
 h1 {
   font-size: 90px;
-  background: -webkit-linear-gradient(#f7fbfc, #06bfff);
+  background: -webkit-linear-gradient(#eb1b1b, #f39303);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: bold;
 }
 
 .image-container {
-  width: 100%;
-  height: 700px;
-  background-image: url(https://images.unsplash.com/photo-1533683083439-1a776a5653cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80);
-  background-position: center;
+  /*  width: 100%;
+  height: 700px; */
+  /*background-image: url(https://images.unsplash.com/photo-1533683083439-1a776a5653cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80);*/
+  /*  background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  -webkit-animation: kenburns-top 5s ease-out both;
-  animation: kenburns-top 5s ease-out both;
+  align-items: center; */
 }
 
 #button-map {
@@ -27,12 +29,32 @@ h1 {
   font-size: 14px;
   letter-spacing: 1px;
   cursor: pointer;
-  box-shadow: inset 0 0 0 0 hwb(19 24% 9%);
+  box-shadow: inset 0 0 0 0 hwb(133 37% 7% / 0.89);
   -webkit-transition: ease-out 1s;
   -moz-transition: ease-out 1s;
   transition: ease-out 1s;
+  font-weight: bold;
 }
 
 #button-map:hover {
-  box-shadow: inset 400px 0 0 0 hsl(29, 98%, 43%);
+  box-shadow: inset 400px 0 0 0 hsl(184, 96%, 49%);
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 250px;
+  position: relative;
+  text-align: center;
+}
+
+.video-container {
+  width: 100%;
+  position: fixed;
+  height: 100vh;
+  margin-top: -20px;
+  display: flex;
+  justify-content: center;
+  background-color: black;
 }

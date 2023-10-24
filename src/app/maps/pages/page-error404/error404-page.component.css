@@ -1,0 +1,33 @@
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  background-image: url("../../../../assets/error404.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.text-container {
+    background-color: rgb(255, 221, 167);
+    position: relative;
+    padding: 50px 250px;
+    top: 350px;
+}
+
+#return{
+    margin-top: 10px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 0 hwb(19 24% 9%);
+    -webkit-transition: ease-out 1s;
+    -moz-transition: ease-out 1s;
+    transition: ease-out 1s;
+  }
+  
+  #return:hover {
+    box-shadow: inset 400px 0 0 0 hsl(29, 98%, 43%);
+  }

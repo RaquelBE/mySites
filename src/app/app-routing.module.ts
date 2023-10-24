@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
-import { DetailPageComponent } from './maps/pages/detail-page/detail-page.component';
+import { Error404PageComponent } from './maps/pages/page-error404/error404-page.component';
 
 const routes: Routes = [
   {
@@ -18,13 +18,13 @@ const routes: Routes = [
     loadChildren: () => import('./maps/maps.module').then((m) => m.MapsModule),
   },
   {
-    path: 'detail/:id',
-    component: DetailPageComponent,
+    path: '404',
+    component: Error404PageComponent,
   },
 
   {
     path: '**',
-    redirectTo: '/',
+    redirectTo: '404',
   },
 ];
 

@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { HttpClientModule } from '@angular/common/http';
+import { Error404PageComponent } from './pages/page-error404/error404-page.component';
 
 
 @NgModule({
@@ -28,8 +29,9 @@ import { HttpClientModule } from '@angular/common/http';
     DetailPageComponent,
     SearchBarComponent,
     SearchResultsComponent,
+    Error404PageComponent,
   ],
   imports: [CommonModule, MapsRoutingModule, HttpClientModule, SideMenuComponent, ReactiveFormsModule, FormsModule],
-  exports: [ FullScreenPageComponent ],
+  exports: [ FullScreenPageComponent, Error404PageComponent ],
 })
 export class MapsModule {}

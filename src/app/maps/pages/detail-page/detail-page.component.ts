@@ -21,8 +21,8 @@ export class DetailPageComponent implements OnInit {
   public map?: Map;
   public currentLngLat: LngLat = new LngLat(-3.691538117018581, 40.4168);
   public sites: [] = [];
-  public newPlace?: Place ;
-  public description: string =  "";
+  public newPlace?: Place;
+  public description: string = '';
 
   constructor(private route: ActivatedRoute, private router: Router) {}
 
@@ -32,7 +32,7 @@ export class DetailPageComponent implements OnInit {
 
     let localStorageDataBase = localStorage.getItem('sites');
     if (localStorageDataBase) this.sites = JSON.parse(localStorageDataBase);
-    console.log("SITES", this.sites)
+    console.log('SITES', this.sites);
     // Obtener el parámetro "id" de la URL
     this.route.params.subscribe((params) => {
       const id = params['id'];
@@ -40,7 +40,11 @@ export class DetailPageComponent implements OnInit {
       // Buscar el lugar por ID
       const place = this.sites.find((site: any) => site.id === id);
       //si place no tiene nada, redirigir al usuario a la página 404
-      this.newPlace = place;      
+      if (!place) {
+        this.router.navigate(['/404']);
+      } else {
+        this.newPlace = place;
+      }
     });
   }
 }

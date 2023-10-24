@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SearchBarComponent } from '../../components/search-bar/search-bar.component';
 import { UploadImageService } from '../../services/upload-image.service';
 
@@ -14,11 +14,14 @@ export class AddSiteComponent {
   imageUrl?: string;
   fileToUpload: File | null = null;
 
-  constructor(private formBuilder: FormBuilder, private uploadImageService: UploadImageService) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private uploadImageService: UploadImageService
+  ) {
     this.siteForm = this.formBuilder.group({
-      name: '',
-      description: '',
-      image: undefined,
+      name: ['', Validators.required],
+      description: ['', Validators.required],
+      image: [''],
     });
   }
 
@@ -27,7 +30,6 @@ export class AddSiteComponent {
     this.siteForm.value.long = this.childComponent.place.center[0];
     this.siteForm.value.id = this.childComponent.place.id;
     this.siteForm.value.name = this.childComponent.place.place_name;
-    console.log('IMAGE', this.siteForm.value.image); 
 
     const storedSites = localStorage.getItem('sites');
     const sites = storedSites ? JSON.parse(storedSites) : [];
@@ -38,7 +40,6 @@ export class AddSiteComponent {
     //guardo el [] actualizado en localStorage
     localStorage.setItem('sites', JSON.stringify(sites));
 
-    console.log('Sitio añadido:', this.siteForm.value);
     //limpio el formulario
     this.siteForm.reset();
   }
@@ -57,8 +58,10 @@ export class AddSiteComponent {
     data.append('upload_preset', 'fcmtmv8a');
     data.append('cloud_name', 'do4qibr9d');
     data.append('public_id', fileName); // Utiliza el nombre de archivo generado
-    this.uploadImageService.uploadSignature(data).subscribe((imageData: any) => {
-      this.siteForm.value.image = imageData.url;
-    });
+    this.uploadImageService
+      .uploadSignature(data)
+      .subscribe((imageData: any) => {
+        this.siteForm.value.image = imageData.url;
+      });
   }
 }

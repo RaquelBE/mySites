@@ -7,6 +7,8 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   font-size: 18px;
   text-align: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  color:black;
 }
 
 .form-group {
@@ -36,14 +38,15 @@ label {
   font-size: 14px;
   letter-spacing: 1px;
   cursor: pointer;
-  box-shadow: inset 0 0 0 0 hwb(19 24% 9%);
+  box-shadow: inset 0 0 0 0 hwb(18 64% 31%);
   -webkit-transition: ease-out 1s;
   -moz-transition: ease-out 1s;
   transition: ease-out 1s;
+  font-weight: bold;
 }
 
 #buttonSave:hover {
-  box-shadow: inset 400px 0 0 0 hsl(29, 98%, 43%);
+  box-shadow: inset 400px 0 0 0 hsl(20, 3%, 64%);
 
 }
 
@@ -53,20 +56,21 @@ label {
   font-size: 14px;
   letter-spacing: 1px;
   cursor: pointer;
-  box-shadow: inset 0 0 0 0 hwb(19 24% 9%);
+  box-shadow: inset 0 0 0 0 hwb(18 64% 31%);
   -webkit-transition: ease-out 1s;
   -moz-transition: ease-out 1s;
   transition: ease-out 1s;
+  font-weight: bold;
 }
 
 #buttonRetorn:hover {
-  box-shadow: inset 400px 0 0 0 hsl(29, 98%, 43%);
+  box-shadow: inset 400px 0 0 0 hsl(20, 3%, 64%);
 }
 
 .image-container {
   width: 100%;
   height: 100vh;
-  background-image: url(https://images.unsplash.com/photo-1533683083439-1a776a5653cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80);
+  background-image: url('../../../../assets/ave-luna.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

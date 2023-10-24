@@ -7,6 +7,7 @@ import { FullScreenPageComponent } from './pages/full-screen-page/full-screen-pa
 import { ZoomRangePageComponent } from './pages/zoom-range-page/zoom-range-page.component';
 import { AddSiteComponent } from './pages/add-site/add-site.component';
 import { DetailPageComponent } from './pages/detail-page/detail-page.component';
+import { Error404PageComponent } from './pages/page-error404/error404-page.component';
 
 const routes: Routes = [
   {
@@ -17,7 +18,7 @@ const routes: Routes = [
       { path: 'zoom-range', component: ZoomRangePageComponent },
       { path: 'add-site', component: AddSiteComponent},
       { path: 'detail/:id', component: DetailPageComponent},
-      { path: '**', redirectTo: 'fullscreen' }
+      { path: '**', component: Error404PageComponent},
     ],
   },
 ];
