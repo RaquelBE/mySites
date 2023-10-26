@@ -1,6 +1,9 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { LngLat, Map, Marker, Popup } from 'mapbox-gl';
 import dataBase from '../../../../../dataBase/data.json';
+import { PlacesService } from '../../services/places.service';
+import { MapService } from '../../services/maps.service';
+import mapboxgl from 'mapbox-gl';
 
 interface MarkerAndColor {
   color: string;
@@ -29,6 +32,11 @@ export class FullScreenPageComponent implements AfterViewInit {
   public map?: Map;
   public currentLngLat: LngLat = new LngLat(-3.691538117018581, 40.4168);
   public places: [] = []; // Inicializar como una matriz de objetos Place
+
+  constructor(
+    private placesService: PlacesService,
+    private mapService: MapService
+  ) {}
 
   ngAfterViewInit(): void {
     if (!localStorage.getItem('sites'))
@@ -60,8 +68,8 @@ export class FullScreenPageComponent implements AfterViewInit {
     );
 
     const popup = new Popup({ closeButton: true }).setHTML(`
-    <a id="popup-link" href="/maps/detail/${place.id}">
-      <h6>${place.name}</h6>
+    <a id="popup-link" href="/maps/detail/${place.id}" class="d-flex flex-column align-items-center justify-content-center text-decoration-none">
+      <h6 style="color: black; display: flex; justify-content: center; flex-wrap: wrap; max-width: 75px">${place.name}</h6>
       <img src="${place.image}" width="100px" />
     </a>
   `);

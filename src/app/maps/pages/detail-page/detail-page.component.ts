@@ -32,7 +32,6 @@ export class DetailPageComponent implements OnInit {
 
     let localStorageDataBase = localStorage.getItem('sites');
     if (localStorageDataBase) this.sites = JSON.parse(localStorageDataBase);
-    console.log('SITES', this.sites);
     // Obtener el parámetro "id" de la URL
     this.route.params.subscribe((params) => {
       const id = params['id'];

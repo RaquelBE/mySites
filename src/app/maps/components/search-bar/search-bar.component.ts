@@ -23,7 +23,6 @@ export class SearchBarComponent {
   }
 
   finishInput(place: any) {
-    console.log("PLACE", place)
     this.place = place;
     this.placeName = place.place_name;
   }

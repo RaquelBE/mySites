@@ -13,6 +13,8 @@ export class AddSiteComponent {
   siteForm: FormGroup;
   imageUrl?: string;
   fileToUpload: File | null = null;
+  currentLat: number = 0;
+  currentLong: number = 0;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -26,10 +28,10 @@ export class AddSiteComponent {
   }
 
   addPlace() {
-    this.siteForm.value.lat = this.childComponent.place.center[1];
-    this.siteForm.value.long = this.childComponent.place.center[0];
-    this.siteForm.value.id = this.childComponent.place.id;
-    this.siteForm.value.name = this.childComponent.place.place_name;
+      this.siteForm.value.lat = this.childComponent.place.center[1];
+      this.siteForm.value.long = this.childComponent.place.center[0];
+      this.siteForm.value.id = this.childComponent.place.id;
+      this.siteForm.value.name = this.childComponent.place.place_name;
 
     const storedSites = localStorage.getItem('sites');
     const sites = storedSites ? JSON.parse(storedSites) : [];
@@ -44,11 +46,11 @@ export class AddSiteComponent {
     this.siteForm.reset();
   }
 
-  prueba($event: any) {
-    console.log('PRUEBA', $event);
+  uploadNewImage($event: any) {
     this.fileToUpload = $event.target.files[0];
     this.uploadImage();
   }
+
 
   uploadImage() {
     const data: any = new FormData();

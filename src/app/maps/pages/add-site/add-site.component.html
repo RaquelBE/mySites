@@ -2,7 +2,7 @@
     <div class="form-container">
         <form [formGroup]="siteForm">
             <div class="form-group">
-                <label for="city">Ciudad</label>
+                <label for="city">Lugar</label>
                 <search-bar></search-bar>
             </div>
 
@@ -12,9 +12,8 @@
                     name="description" placeholder="Descripción">
             </div>
 
-            <input type="file" (change)="prueba($event)" class="form-control" id="file">
-           
-            <button (click)="addPlace()" id="buttonSave" type="submit" [routerLink]="['/maps/fullscreen']" class="btn btn-secondary">Añadir Ciudad</button>
+            <input type="file" (change)="uploadNewImage($event)" class="form-control" id="file">
+            <button (click)="addPlace()" id="buttonSave" type="submit" [routerLink]="['/maps/fullscreen']" class="btn btn-secondary">Añadir Lugar</button>
             <button id="buttonRetorn" type="submit" [routerLink]="['/maps/fullscreen']" class="btn btn-secondary">Volver al
                 Mapa</button>
         </form>

@@ -32,9 +32,7 @@ label {
 }
 
 #buttonSave {
-  margin-top: 10px;
-  margin-top: 10px;
-  margin-left: 20px;
+  margin: 20px 0 0 20px;
   font-size: 14px;
   letter-spacing: 1px;
   cursor: pointer;
@@ -51,8 +49,7 @@ label {
 }
 
 #buttonRetorn {
-  margin-top: 10px;
-  margin-left: 20px;
+  margin: 20px 0 0 20px;
   font-size: 14px;
   letter-spacing: 1px;
   cursor: pointer;
@@ -78,4 +75,10 @@ label {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 750px) {
+  .form-container {
+    margin: 0 20px;
+  }
 }

@@ -1,14 +1,27 @@
 .pointer {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 p {
-    font-size: 12px;
+  font-size: 12px;
 }
 
-.asdf {
-    max-height: 300px;
-    overflow: scroll;
-    display: flex;
-    justify-content: center;
+.searcher {
+  max-height: 300px;
+  display: flex;
+  justify-content: start;
+  position: relative;
+  flex-direction: row;
+  overflow-x: scroll;
+}
+
+.list-group-item {
+  display: block;
+}
+
+
+@media (max-width: 750px) {
+  .searcher {
+    flex-direction: column;
+  } 
 }
