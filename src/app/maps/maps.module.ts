@@ -19,8 +19,6 @@ import { SearchResultsComponent } from './components/search-results/search-resul
 import { HttpClientModule } from '@angular/common/http';
 import { Error404PageComponent } from './pages/page-error404/error404-page.component';
 
-
-
 @NgModule({
   declarations: [
     MapsLayoutComponent,
@@ -31,9 +29,15 @@ import { Error404PageComponent } from './pages/page-error404/error404-page.compo
     SearchBarComponent,
     SearchResultsComponent,
     Error404PageComponent,
-
   ],
-  imports: [CommonModule, MapsRoutingModule, HttpClientModule, SideMenuComponent, ReactiveFormsModule, FormsModule],
-  exports: [ FullScreenPageComponent, Error404PageComponent ],
+  imports: [
+    CommonModule,
+    MapsRoutingModule,
+    HttpClientModule,
+    SideMenuComponent,
+    ReactiveFormsModule,
+    FormsModule,
+  ],
+  exports: [FullScreenPageComponent, Error404PageComponent],
 })
 export class MapsModule {}

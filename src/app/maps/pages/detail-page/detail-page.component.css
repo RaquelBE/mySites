@@ -7,7 +7,6 @@
   font-size: 18px;
   text-align: center;
   background-color: rgba(255, 255, 255, 0.3);
-  /*font-weight: bold;*/
 }
 
 .image-container {
@@ -22,13 +21,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
- /*  padding: 50px;
-  background-color: black;
-  opacity: 20%; */
 }
 
-
-#return{
+#return {
   margin-top: 10px;
   font-size: 14px;
   letter-spacing: 1px;
@@ -42,4 +37,3 @@
 #return:hover {
   box-shadow: inset 400px 0 0 0 hsl(20, 3%, 64%);
 }
-

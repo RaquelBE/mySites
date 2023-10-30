@@ -9,7 +9,7 @@ import { Feature } from '../../interfaces/places';
 })
 export class SearchResultsComponent {
   @Output() sendPlace = new EventEmitter<any>();
-  
+
   constructor(private placesService: PlacesService) {}
 
   get isLoadingPlaces(): Boolean {

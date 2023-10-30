@@ -6,7 +6,6 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class UploadImageService {
-
   constructor(private httpClient: HttpClient) {}
 
   uploadSignature(vals: any): Observable<any> {

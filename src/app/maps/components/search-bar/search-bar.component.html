@@ -1,5 +1,5 @@
 <div class="search-container">
-    <input [(ngModel)]="placeName" type="text" class="form-control" placeholder="Buscar lugar..." #txtQuery (keyup)="onQueryChanged(txtQuery.value)">
-    <search-results (sendPlace) = finishInput($event)></search-results>
-</div> 
-
+    <input [(ngModel)]="placeName" type="text" class="form-control" placeholder="Buscar lugar..." #txtQuery
+        (keyup)="onQueryChanged(txtQuery.value)">
+    <search-results (sendPlace)=finishInput($event)></search-results>
+</div>

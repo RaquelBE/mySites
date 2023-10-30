@@ -1,7 +1,7 @@
 div {
   width: 100vw;
   height: 100vh;
-} 
+}
 
 #map-list {
   font-size: 15px;
@@ -20,7 +20,7 @@ div {
   font-weight: bold;
 }
 
-#add-marker-button{
+#add-marker-button {
   margin-top: 10px;
   margin-left: 20px;
   font-size: 14px;
@@ -50,5 +50,3 @@ div {
   position: relative;
   animation: fadeIn 0.5s;
 }
-
-

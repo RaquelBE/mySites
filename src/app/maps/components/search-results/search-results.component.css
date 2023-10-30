@@ -19,9 +19,8 @@ p {
   display: block;
 }
 
-
 @media (max-width: 750px) {
   .searcher {
     flex-direction: column;
-  } 
+  }
 }

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { Error404PageComponent } from './maps/pages/page-error404/error404-page.component';
+import { AboutMeComponent } from './components/about-me/about-me.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,12 @@ const routes: Routes = [
     path: 'maps',
     loadChildren: () => import('./maps/maps.module').then((m) => m.MapsModule),
   },
+
+  {
+    path: 'about-me',
+    component: AboutMeComponent,
+  },
+
   {
     path: '404',
     component: Error404PageComponent,

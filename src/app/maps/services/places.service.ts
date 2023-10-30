@@ -19,8 +19,10 @@ export class PlacesService {
     return !!this.userLocation;
   }
 
-  constructor(private placesApi: PlacesApiClient, private mapService: MapService
-    ) {
+  constructor(
+    private placesApi: PlacesApiClient,
+    private mapService: MapService
+  ) {
     this.getUserLocation();
   }
 

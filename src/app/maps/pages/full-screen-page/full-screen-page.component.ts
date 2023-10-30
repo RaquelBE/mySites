@@ -3,7 +3,6 @@ import { LngLat, Map, Marker, Popup } from 'mapbox-gl';
 import dataBase from '../../../../../dataBase/data.json';
 import { PlacesService } from '../../services/places.service';
 import { MapService } from '../../services/maps.service';
-import mapboxgl from 'mapbox-gl';
 
 interface MarkerAndColor {
   color: string;
